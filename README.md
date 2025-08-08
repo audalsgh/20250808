@@ -53,3 +53,15 @@ GPU에 직접 명령을 내리는 커널
 <img width="523" height="88" alt="image" src="https://github.com/user-attachments/assets/70838f67-aee5-4c65-ae3e-f4a9c911dfd6" /><br>
 **-> Coalesced Kernel이 메모리상에 연속된 주소에 접근하는 병합 방식이므로, GPU 성능이 최적화되어 3배가량 빠르다.**
 
+## 원자적 연산과 경쟁 상태
+경쟁 상태(Race Condition) 문제
+- 여러 스레드가 공유 자원에 동시에 접근할 때 발생
+- `a += 1` 같은 비원자적 연산은 read → add → write로 분리된 세 단계로 실행되기때문에 공유 메모리 상황에선 경쟁 상태 문제가 생긴다.
+  - ex) a = 0 이라는 초기상태에서 여러 스레드가 `a += 1` 연산을 동시에 실행한다면, <br>모든 스레드들은 자기가 바라보는 현재 상태인 a = 0 을 기준으로 +1 연산을 시도하여 +2, +3 이 되지 못하고, a = 1 로 계속 덮어씌워진다.
+
+원자적 연산(Atomic Operation)
+- 경쟁 상태 문제를 해결하고, 병렬 알고리즘의 정확성을 보장하는 방법
+- `cuda.atomic.add(hist_out, pixel_value, 1)`
+
+  <img width="588" height="464" alt="image" src="https://github.com/user-attachments/assets/6348fc18-7c49-4d99-978a-fe2debf8a300" /><br>
+**-> hist_out[pixel_value] 위치에 대한 증가 연산을 하나씩 순차적으로 실행하여, 누락 없이 정확히 num_pixels만큼 더함**
