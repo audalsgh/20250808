@@ -47,6 +47,7 @@ GPU에 직접 명령을 내리는 커널
 - Numpy 배열은 행 우선(row-major) 방식이므로, 행 방향인 가로로 "연속적인 메모리 주소"를 갖는다.
 - 한번의 트랜잭션으로 32개의 주소 요청을 처리할수 있게, 인접한 스레드는 인접한 열에 접근하도록 커널을 설계해야함.
 - ex) 스레드 0, 1, 2가 각각 2차원 배열의 [row][0], [row][1], [row][2]에 접근 = 1번의 메모리 트랜잭션
+
   <img width="678" height="460" alt="image" src="https://github.com/user-attachments/assets/91a4cba3-a5d2-45bb-bc5d-e321d4ad9a3f" />
 
 ```python
