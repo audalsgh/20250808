@@ -12,14 +12,14 @@
 - CPU 메모리의 Numpy 배열을 GPU 메모리로 복사 -> 커널이 GPU에서 함수를 병렬로 실행시킴 (매우빠름) -> 다시 CPU 메모리로 결과 배열을 복사함.<br>(Host->Device->Host 순)
 - 병목 : GPU의 연산이 아무리 빨라도 데이터 전송에 드는 시간이 존재하므로, 간단한 코드는 CPU에서만 하는게 좋다.
   <img width="565" height="682" alt="image" src="https://github.com/user-attachments/assets/886564f2-2a17-474e-a936-4d6cd3bf2ec5" /><br>
--> 작은 데이터에선 GPU 가속을 해도 "데이터 전송시간" 비중이 더 커서 속도향상 체감이 제한적.<br>
--> 큰 데이터에선 "연산시간"이 압도적으로 줄어들어, 동일한 "데이터 전송시간"을 가져도 걸린시간 총합이 적어서 빠르다고 느낀다.
+**-> 작은 데이터에선 GPU 가속을 해도 "데이터 전송시간" 비중이 더 커서 속도향상 체감이 제한적.**<br>
+**-> 큰 데이터에선 "연산시간"이 압도적으로 줄어들어, 동일한 "데이터 전송시간"을 가져도 걸린시간 총합이 적어서 빠르다고 느낀다.**
 
 함정 : 치명적 상쇄(Catastrophic Cancellation)
 - float32 = 약 7자리의 10진수 단정밀도
 - float64 = 약 15~17자리의 배정밀도
 - GPU는 보통 크기가 작은 float32 연산이 훨씬 빠르므로, 모든 연산이 float32로 일어나도록 명시해준다.<br>
 `@vectorize(['float32(float32)'], target='cuda')`<br>
-- 정밀한 제어를 위해서라면 성능을 약간 희생하여 float64를 사용한다.
-- float32연산은 1보다 매우작은 값을 무시하므로, 1e-8같은 작은 값을 반환하면 0이라고 나온다.
-  <img width="259" height="54" alt="image" src="https://github.com/user-attachments/assets/439c4d2d-afaa-48e0-a692-5492ad5a9341" />
+- 정밀한 제어를 위해서라면 성능을 약간 희생하여 float64를 사용한다.<br>
+  <img width="259" height="54" alt="image" src="https://github.com/user-attachments/assets/439c4d2d-afaa-48e0-a692-5492ad5a9341" /><br>
+**-> float32연산은 1보다 매우작은 값을 무시하므로, 1e-8같은 작은 값을 반환하면 0이라고 나온다.**
