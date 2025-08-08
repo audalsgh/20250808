@@ -21,5 +21,6 @@
 - GPU는 보통 크기가 작은 float32 연산이 훨씬 빠르므로, 모든 연산이 float32로 일어나도록 데코레이터에 명시해준다.<br>
 `@vectorize(['float32(float32)'], target='cuda')`<br>
 - 정밀한 제어를 위해서라면 성능을 약간 희생하여 float64를 사용한다.<br>
+
   <img width="259" height="54" alt="image" src="https://github.com/user-attachments/assets/439c4d2d-afaa-48e0-a692-5492ad5a9341" /><br>
 **-> float32연산은 1보다 매우작은 값을 무시하므로, 1e-8같은 작은 값을 반환하면 0이라고 나온다.**
