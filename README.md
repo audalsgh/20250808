@@ -18,7 +18,7 @@
 함정 : 치명적 상쇄(Catastrophic Cancellation)
 - float32 = 약 7자리의 10진수 단정밀도
 - float64 = 약 15~17자리의 배정밀도
-- GPU는 보통 크기가 작은 float32 연산이 훨씬 빠르므로, 모든 연산이 float32로 일어나도록 명시해준다.<br>
+- GPU는 보통 크기가 작은 float32 연산이 훨씬 빠르므로, 모든 연산이 float32로 일어나도록 데코레이터에 명시해준다.<br>
 `@vectorize(['float32(float32)'], target='cuda')`<br>
 - 정밀한 제어를 위해서라면 성능을 약간 희생하여 float64를 사용한다.<br>
   <img width="259" height="54" alt="image" src="https://github.com/user-attachments/assets/439c4d2d-afaa-48e0-a692-5492ad5a9341" /><br>
