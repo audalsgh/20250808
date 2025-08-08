@@ -50,12 +50,6 @@ GPU에 직접 명령을 내리는 커널
 
   <img width="678" height="460" alt="image" src="https://github.com/user-attachments/assets/91a4cba3-a5d2-45bb-bc5d-e321d4ad9a3f" />
 
-```python
-# A행렬의 열 순서를 가로축으로 보고, B행렬의 행을 채웠다.
-# 출력되는 B행렬은 가로방향으로 진행하는 메모리 병합 접근 방식!
-B[x, y] = A[y, x]
-```
-
 <img width="523" height="88" alt="image" src="https://github.com/user-attachments/assets/70838f67-aee5-4c65-ae3e-f4a9c911dfd6" /><br>
 **-> Coalesced Kernel이 메모리상에 연속된 주소에 접근하는 병합 방식이므로, GPU 성능이 최적화되어 3배가량 빠르다.**
 
