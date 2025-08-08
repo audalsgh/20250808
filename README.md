@@ -53,3 +53,6 @@ GPU에 직접 명령을 내리는 커널
 B[x, y] = A[y, x]
 ```
 
+<img width="523" height="88" alt="image" src="https://github.com/user-attachments/assets/70838f67-aee5-4c65-ae3e-f4a9c911dfd6" /><br>
+**-> Coalesced Kernel이 메모리상에 연속된 주소에 접근하는 병합 방식이므로, GPU 성능이 최적화되어 3배가량 빠르다.**
+
