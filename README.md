@@ -1,5 +1,7 @@
 # 35일차 - CUDA환경에서 GPU로 실시간 데이터 처리
-[day5_lecture.pdf](https://github.com/user-attachments/files/21676212/day5_lecture.pdf)
+[day5_lecture.pdf](https://github.com/user-attachments/files/21676212/day5_lecture.pdf)<br>
+https://huggingface.co/blog/pi0<br>
+https://github.com/NVIDIA/Isaac-GR00T
 
 ## Numba란?
 1. 정의
