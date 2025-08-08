@@ -1,4 +1,5 @@
 # 35일차 - CUDA환경에서 GPU로 실시간 데이터 처리
+[day5_lecture.pdf](https://github.com/user-attachments/files/21676212/day5_lecture.pdf)
 
 ## Numba란?
 1. 정의
@@ -63,7 +64,7 @@ GPU에 직접 명령을 내리는 커널
 원자적 연산(Atomic Operation)
 - 경쟁 상태 문제를 해결하고, 병렬 알고리즘의 정확성을 보장하는 방법
 - `cuda.atomic.add(hist_out, pixel_value, 1)`로, 한 스레드가 `a += 1` 연산을 마칠때까지 다른 스레드들은 대기.
-- 그리드-스트라이드 루프에서 카운터는 각 픽셀마다 한 번씩 증가해야 하는데, 스레드가 순차적으로 처리되니 절대 중첩되거나 메모리가 덮어씌워질 일이 없다. 
+- 그리드-스트라이드 루프에서 카운터는 각 픽셀마다 한 번씩 증가해야 하는데,<br>스레드가 순차적으로 처리되니 절대 중첩되거나 메모리가 덮어씌워질 일이 없다. 
 
   <img width="588" height="464" alt="image" src="https://github.com/user-attachments/assets/6348fc18-7c49-4d99-978a-fe2debf8a300" /><br>
 **-> hist_out[pixel_value] 위치에 대한 증가 연산을 하나씩 순차적으로 실행하여, 누락 없이 정확히 num_pixels만큼 더함**
